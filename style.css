@@ -1,0 +1,550 @@
+/* =========================================================
+   Portofolio - Mayong Aditya
+   Layout: CSS Flexbox + CSS Grid
+   Responsif: Media Query (1024px, 768px, 640px, 480px)
+   ========================================================= */
+
+/* ---------- Variabel warna & ukuran ---------- */
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --ink: #16202c;
+  --muted: #5b6673;
+  --line: #dde2e8;
+  --accent: #1f5fbf;
+  --accent-dark: #174a96;
+  --amber: #f2b84b;
+  --amber-dark: #e5a52d;
+  --radius: 10px;
+  --max-width: 1080px;
+}
+
+/* ---------- Reset dasar ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Utilitas ---------- */
+.container {
+  width: min(100% - 2rem, var(--max-width));
+  margin-inline: auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  padding: 0.5rem 1rem;
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Navigasi (Flexbox) ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.nav-toggle {
+  display: none;
+  padding: 0.45rem 0.9rem;
+  font: inherit;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* ---------- Section umum ---------- */
+.section {
+  padding: 4.5rem 0;
+}
+
+.section-alt {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.section-title {
+  font-size: 1.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-lead {
+  max-width: 60ch;
+  margin-bottom: 2rem;
+  color: var(--muted);
+}
+
+/* ---------- Beranda / Hero (Flexbox) ---------- */
+.hero {
+  padding: 5.5rem 0 5rem;
+  color: #fff;
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.hero :focus-visible {
+  outline-color: var(--amber);
+}
+
+.hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.hero-text {
+  flex: 1 1 auto;
+}
+
+.hero h1 {
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.25rem;
+}
+
+.hero p {
+  max-width: 50ch;
+  font-size: 1.125rem;
+  color: #c3ccd8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.avatar {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 220px;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 24px;
+  background: var(--amber);
+  color: var(--ink);
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Tombol ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn-outline {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.hero .btn-primary {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+.hero .btn-primary:hover {
+  background: var(--amber-dark);
+}
+
+.hero .btn-outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.hero .btn-outline:hover {
+  border-color: var(--amber);
+  color: var(--amber);
+}
+
+/* ---------- Tentang Saya (Grid) ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text p {
+  max-width: 62ch;
+}
+
+.facts {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.fact dt {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.fact dd {
+  margin: 0.15rem 0 0;
+  font-weight: 500;
+}
+
+/* ---------- Card umum ---------- */
+.card {
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.section-alt .card {
+  background: var(--bg);
+}
+
+.card h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Chips ---------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chips li {
+  padding: 0.2rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.section-alt .chips li {
+  background: var(--surface);
+}
+
+/* ---------- Kemampuan (Grid) ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ---------- Proyek (Grid) ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+}
+
+.project p {
+  color: var(--muted);
+}
+
+.project .chips {
+  margin-top: auto;
+  padding-top: 0.5rem;
+}
+
+.project-link {
+  align-self: flex-start;
+  margin-top: 1.25rem;
+  font-weight: 500;
+}
+
+.project:hover {
+  border-color: var(--accent);
+}
+
+/* ---------- Kontak (Flexbox) ---------- */
+.contact-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.contact-list li {
+  flex: 1 1 240px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 1.25rem 1.5rem;
+  color: var(--ink);
+  text-decoration: none;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.contact-item:hover {
+  border-color: var(--accent);
+}
+
+.contact-label {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.contact-value {
+  font-weight: 500;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Footer (Flexbox) ---------- */
+.site-footer {
+  padding: 1.75rem 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+/* =========================================================
+   MEDIA QUERY
+   ========================================================= */
+
+/* Laptop kecil / tablet landscape */
+@media (max-width: 1024px) {
+  .hero-inner {
+    gap: 2rem;
+  }
+
+  .avatar {
+    width: 180px;
+    font-size: 3.25rem;
+  }
+
+  .about-grid {
+    gap: 2rem;
+  }
+}
+
+/* Tablet portrait: menu jadi dropdown, layout jadi satu kolom */
+@media (max-width: 768px) {
+  .section {
+    padding: 3.5rem 0;
+  }
+
+  .hero {
+    padding: 3.5rem 0;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0.5rem 1rem 1rem;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.8rem 0;
+  }
+
+  .hero-inner {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 120px;
+    border-radius: 20px;
+    font-size: 2.5rem;
+  }
+
+  .about-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ponsel besar */
+@media (max-width: 640px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Ponsel kecil */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.625rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contact-list {
+    flex-direction: column;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Hormati pengaturan pengguna yang mengurangi animasi */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
